@@ -1,0 +1,49 @@
+<?php
+
+if(isset($_POST['submit'])){
+
+    print_r($_REQUEST);
+
+    //print_r($_FILES);
+
+    $user = wp_get_current_user();
+    $post_id = wp_insert_post( array(
+        'post_status' => 'draft',
+        'post_type' => 'pregunta',
+        'post_title' => $_REQUEST['title'],
+        'post_content' => $_REQUEST['content'],
+        'post_author' => $user->ID
+    ) );
+
+    $term = get_term_by( 'id', $_REQUEST['category'], 'categoria-pregunta');
+
+    print_r($term);
+
+    wp_set_object_terms($post_id, $term->term_id, 'categoria-pregunta');
+
+    echo "<h3>".$post_id ." creado</h3>";
+}
+
+?>
+<form method="post" enctype="multipart/form-data">
+    <label for="inputTitle" class="form-label"><b><?php _e("Pregunta", "enfermería"); ?></b></label>
+    <input class="form-control" id="inputTitle" type="text" name="title" placeholder="<?php _e("Pregunta", "enfermería"); ?>" style="width: 100%;" required /><br/>
+    <label for="inputContent" class="form-label"><b><?php _e("Más datos", "enfermería"); ?></b></label>
+    <textarea class="form-control" id="inputContent" name="content" placeholder="<?php _e("Amplia tu pregunta con más datos.", "enfermería"); ?>" style="width: 100%; min-height: 200px;" required></textarea><br/>
+    <p><b><?php _e("Categoría", "enfermería"); ?></b></p>
+    <div class="form-check">
+        <?php
+            $terms = get_terms( array(
+                'taxonomy' => 'categoria-pregunta',
+                'hide_empty' => false,
+                'orderby' => 'name',
+                'order' => 'ASC'
+            ) );
+            foreach($terms as $term) { ?>
+                <label><input class="form-check-input" type="radio" name="category" value="<?php echo $term->term_id; ?>" required /> <?php echo $term->name; ?></label><br/>
+        <?php } ?>
+    </div><br/>
+    <label for="formFile" class="form-label"><b><?php _e("¿Quieres añadir algún documento?", "enfermería"); ?></b></label>
+    <input class="form-control" type="file" name="file" id="formFile"><br/>
+    <input type="submit" class="btn btn-primary" value="<?php _e("Enviar", "enfermería"); ?>" name="submit">
+</form>
