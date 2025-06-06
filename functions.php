@@ -11,6 +11,7 @@ add_action('plugins_loaded', 'enfermeria_plugins_loaded', 0 );
 /* ---------------- Boostrap ------------------------ */ 
 function enfermeria_bootstrap_enqueue_styles() {
     wp_enqueue_style( 'bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css' );
+    wp_enqueue_style( 'style-css', get_template_directory_uri().'/style.css' );
     wp_enqueue_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', array(), '1.0.0', true ); // Used for loading scripts
 }
 add_action('wp_enqueue_scripts', 'enfermeria_bootstrap_enqueue_styles');
@@ -25,6 +26,15 @@ function enfermeria_admin_bar(){
   }
 }
 add_action('init', 'enfermeria_admin_bar' );
+
+if ( is_user_logged_in() && is_admin() ) {
+    global $current_user;
+    get_currentuserinfo();
+    $user_info = get_userdata($current_user->ID);
+    if ( $user_info->wp_user_level == 0 )  {
+        header( 'Location: '.get_bloginfo('home').'/' );
+    }
+}
 
 
 /* Registrar usuario */
