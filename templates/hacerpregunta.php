@@ -2,7 +2,7 @@
 
 if(isset($_POST['submit'])){
 
-    print_r($_REQUEST);
+    //print_r($_REQUEST);
 
     //print_r($_FILES);
 
@@ -17,11 +17,22 @@ if(isset($_POST['submit'])){
 
     $term = get_term_by( 'id', $_REQUEST['category'], 'categoria-pregunta');
 
-    print_r($term);
+    //print_r($term);
 
     wp_set_object_terms($post_id, $term->term_id, 'categoria-pregunta');
+    
+    //Subimos ficheros
+    if(!empty($_FILES['file']['name']) && $_FILES['file']['error'] == 0) {
+        require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+        require_once(ABSPATH . "wp-admin" . '/includes/file.php');
+        require_once(ABSPATH . "wp-admin" . '/includes/media.php');
 
-    echo "<h3>".$post_id ." creado</h3>";
+
+        $attachment = media_handle_upload('file', $user->ID);
+        update_field('adjunto', $attachment, $post_id);
+    }
+
+    echo "<h3>".__("Pregunta creada correctamente. Recibiras un mensaje cuando se elabore la respuesta.", "enfermeria")."</h3>";
 }
 
 ?>

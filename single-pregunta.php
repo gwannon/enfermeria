@@ -6,9 +6,10 @@
             <?php while ( have_posts() ) : the_post(); ?>
                 <h1><?php the_title(); ?></h1>
                 <?php the_content(); ?>
+               <p><em><?php printf(__("Por %s %s", "enfermeria"), get_the_author_meta('first_name', $post->post_author), get_the_author_meta('last_name', $post->post_author)); ?></em></p>
                 <?php $adjunto = get_field('adjunto', $post->ID);
                 if($adjunto != '') { ?>
-                    <a class="btn btn-primary" target="_blank" href="<?php echo $adjunto; ?>"><?php _e("Ver adjunto", "enfermeras"); ?></a>
+                    <a class="btn btn-primary" target="_blank" href="<?php echo wp_get_attachment_url($adjunto); ?>"><?php _e("Ver adjunto", "enfermeras"); ?></a>
                 <?php } ?>
                 <?php 
                     $respuesta = get_field('respuesta', $post->ID);

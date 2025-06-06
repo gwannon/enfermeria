@@ -55,6 +55,7 @@
                 <div id="collapse<?php echo $post->ID; ?>" class="accordion-collapse collapse" aria-labelledby="heading<?php echo $post->ID; ?>" data-bs-parent="#preguntas">
                     <div class="accordion-body">
                         <?php the_excerpt(); ?>
+                        <p><em><?php printf(__("Por %s %s", "enfermeria"), get_the_author_meta('first_name', $post->post_author), get_the_author_meta('last_name', $post->post_author)); ?></em></p>
                         <a class="btn btn-primary" href="<?php the_permalink(); ?>"><?php _e("Ver pregunta completa", "enfermeras"); ?></a>
                     </div>
                 </div>

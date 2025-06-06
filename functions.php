@@ -40,11 +40,20 @@ function enfermeria_custom_make_new_user(){
   $user = sanitize_title($_POST['email']); // potentially sanitize these
   $pass = $_POST['password']; // potentially sanitize these
   $email = $_POST['email']; // potentially sanitize these
+  $firstname = $_POST['firstname'];
+  $lastname = $_POST['lastname'];
   
   $user_id = wp_create_user( $user, $pass, $email ); // this creates the new user and returns the ID
 
   if($user_id){ // if the user exists/if creating was successful.
     $user = new WP_User( $user_id ); // load the new user
+
+    $userdata = array(
+        'ID' => $user_id,
+        'first_name' => $firstname,
+        'last_name' => $lastname,
+    );
+    wp_update_user( $userdata );
 
     $user->set_role('subscriber'); // give the new user a role, in this case a subscriber
 
