@@ -14,6 +14,9 @@
 		</div>
 		<?php if(is_user_logged_in()) { ?>
 			<div class="col text-end">
+				<form method="get">
+					<input type="text" name="s" value="<?php echo get_query_var('s'); ?>" placeholder="<?php _e("Buscar", "enfermeria"); ?>" />
+				</form>
 				<?php $user = wp_get_current_user();
     				if (in_array('approved-subscriber', (array) $user->roles ) ) { ?>
 						<a class="btn btn-success" href="<?php echo get_home_url(); ?>?action=create"><?php _e("Hacer pregunta", "enfermeria"); ?></a>

@@ -27,6 +27,8 @@ function enfermeria_admin_bar(){
 }
 add_action('init', 'enfermeria_admin_bar' );
 
+
+//No dejamos entrar a los suscriptores a WP-ADMIN
 if ( is_user_logged_in() && is_admin() ) {
     global $current_user;
     get_currentuserinfo();
@@ -35,6 +37,20 @@ if ( is_user_logged_in() && is_admin() ) {
         header( 'Location: '.get_bloginfo('home').'/' );
     }
 }
+
+//metemos la respuesta en la búsqueda
+function searchfilter($query) {
+  if ($query->is_search && !is_admin() ) {
+      if(isset($_GET['post_type'])) {
+          $type = $_GET['post_type'];
+              if($type == 'pregunta') {
+                  $query->set('post_type',array('pregunta'));
+              }
+      }       
+  }
+  return $query;
+}
+add_filter('pre_get_posts','searchfilter');
 
 
 /* Registrar usuario */

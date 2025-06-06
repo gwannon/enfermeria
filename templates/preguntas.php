@@ -48,6 +48,10 @@
             );
         }
 
+        if(isset($_GET['s']) && $_GET['s'] != '') {
+            $args['s'] = get_query_var('s');
+        }
+
         $the_query = new WP_Query( $args);
         while ( $the_query->have_posts() ) { $the_query->the_post(); ?>
             <div class="accordion-item">
