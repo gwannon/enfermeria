@@ -6,16 +6,19 @@ if(isset($_POST['submit'])){
 
     //print_r($_FILES);
 
+    $term = get_term_by( 'id', $_REQUEST['category'], 'categoria-pregunta');
+
     $user = wp_get_current_user();
     $post_id = wp_insert_post( array(
         'post_status' => 'draft',
         'post_type' => 'pregunta',
-        'post_title' => $_REQUEST['title'],
+        //'post_title' => $_REQUEST['title'],
+        'post_title' => $term->name." | ". get_the_author_meta('first_name', get_current_user_id())." ".get_the_author_meta('last_name', get_current_user_id())." | ".substr($_REQUEST['content'], 0, 50),
         'post_content' => $_REQUEST['content'],
         'post_author' => $user->ID
     ) );
 
-    $term = get_term_by( 'id', $_REQUEST['category'], 'categoria-pregunta');
+    
 
     //print_r($term);
 
@@ -37,10 +40,10 @@ if(isset($_POST['submit'])){
 
 ?>
 <form method="post" enctype="multipart/form-data">
-    <label for="inputTitle" class="form-label"><b><?php _e("Pregunta", "enfermería"); ?></b></label>
-    <input class="form-control" id="inputTitle" type="text" name="title" placeholder="<?php _e("Pregunta", "enfermería"); ?>" style="width: 100%;" required /><br/>
-    <label for="inputContent" class="form-label"><b><?php _e("Más datos", "enfermería"); ?></b></label>
-    <textarea class="form-control" id="inputContent" name="content" placeholder="<?php _e("Amplia tu pregunta con más datos.", "enfermería"); ?>" style="width: 100%; min-height: 200px;" required></textarea><br/>
+    <?php /* <label for="inputTitle" class="form-label"><b><?php _e("Pregunta", "enfermería"); ?></b></label>
+    <input class="form-control" id="inputTitle" type="text" name="title" placeholder="<?php _e("Pregunta", "enfermería"); ?>" style="width: 100%;" required /><br/> */ ?>
+    <label for="inputContent" class="form-label"><b><?php _e("Pregunta", "enfermería"); ?></b></label>
+    <textarea class="form-control" id="inputContent" name="content" placeholder="<?php _e("Danos los más datos posibles.", "enfermería"); ?>" style="width: 100%; min-height: 200px;" required></textarea><br/>
     <p><b><?php _e("Categoría", "enfermería"); ?></b></p>
     <div class="form-check">
         <?php

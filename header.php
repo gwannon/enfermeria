@@ -13,9 +13,9 @@
         	<h1><a href="<?php echo get_home_url(); ?>"><?php _e("Consultas enfermeria", "enfermeria"); ?></a></h1>
 		</div>
 		<?php if(is_user_logged_in()) { ?>
-			<div class="col text-end">
-				<form method="get">
-					<input type="text" name="s" value="<?php echo get_query_var('s'); ?>" placeholder="<?php _e("Buscar", "enfermeria"); ?>" />
+			<div class="col d-flex flex-row align-items-start justify-content-end">
+				<form method="get" action="<?php echo get_home_url(); ?>">
+					<input class="form-control" type="text" name="s" value="<?php echo get_query_var('s'); ?>" placeholder="<?php _e("Buscar", "enfermeria"); ?>" />
 				</form>
 				<?php $user = wp_get_current_user();
     				if (in_array('approved-subscriber', (array) $user->roles ) ) { ?>
