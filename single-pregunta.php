@@ -23,10 +23,12 @@
                     </div>
                     
                 <?php } else { ?>
+                    <hr>
                     <div class="alert alert-warning" role="alert"><?php _e("Esta pregunta todavía no ha sido contestada.", "enfermeria"); ?></div>
                 <?php } ?>
             <?php endwhile; ?>
         <?php } else { ?>
+            <hr>
             <div class="alert alert-warning" role="alert"><?php _e("Su perfíl todavía no esta aprobado por los administradores.", "enfermeria"); ?></div>
         <?php } ?>
     </div>

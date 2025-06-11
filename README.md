@@ -23,3 +23,4 @@ Tema de WP para sistema de preguntas de enfermería.
 * Categorías
 * Titulares de las preguntas
 * Textos de los emails
+* Traducción de preguntas ???

@@ -13,6 +13,8 @@ function enfermeria_bootstrap_enqueue_styles() {
     wp_enqueue_style( 'bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css' );
     wp_enqueue_style( 'style-css', get_template_directory_uri().'/style.css' );
     wp_enqueue_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', array(), '1.0.0', true ); // Used for loading scripts
+    wp_enqueue_style( 'google-font', 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap' );
+
 }
 add_action('wp_enqueue_scripts', 'enfermeria_bootstrap_enqueue_styles');
 
@@ -102,3 +104,16 @@ function enfermeria_wp_login_form() {
   return $login;
 }
 
+
+function enfermeria_custom_login_logo() {
+    echo '<style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image: url(' . get_stylesheet_directory_uri() . '/images/webosk00-logo-osakidetza.png);
+            height: 100px; /* Change the height as needed */
+            width: 100%; /* Use 100% width for responsiveness */
+            background-size: contain; /* Adjust this property as needed */
+        }
+    </style>';
+}
+
+add_action('login_enqueue_scripts', 'enfermeria_custom_login_logo');

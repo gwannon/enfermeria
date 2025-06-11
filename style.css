@@ -1,5 +1,5 @@
 /**
- * Theme Name: 	      enfermeria
+ * Theme Name: 	    enfermeria
  * Theme URI:         https://example.com/fabled-sunset
  * Description:       Custom theme description...
  * Version:           1.0.0
@@ -15,8 +15,34 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+:root {
+	--primary-color: #333399;
+   --secondary-color: #ecf2fe;
+}
 
- label {
+* {
+	font-family: "Open Sans", sans-serif;
+}
+
+label {
     width: 100%;
     display: block;
- }
+}
+
+.nav-link,
+.wp-pagenavi a {
+   color: var(--primary-color) !important;
+}
+
+.nav-link {
+   font-weight: 700;
+}
+
+.alert-primary {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color); 
+}
