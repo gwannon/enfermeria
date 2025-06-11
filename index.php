@@ -10,7 +10,7 @@
                 <?php include_once(__DIR__."/templates/preguntas.php"); ?>
             <?php } ?>
     <?php } else { ?>
-        <div class="alert alert-primary" role="alert"><?php _e("Su perfíl todavía no esta aprobado por los administradores.", "enfermeria"); ?></div>
+        <div class="alert alert-warning" role="alert"><?php _e("Su perfíl todavía no está aprobado por los administradores.", "enfermeria"); ?></div>
     <?php } ?>
 <?php } else { ?>
     <?php include_once(__DIR__."/templates/loginregistro.php"); ?>

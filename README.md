@@ -16,3 +16,10 @@ Tema de WP para sistema de preguntas de enfermería.
     * Al registrarse un usuario
     * Al crearse una pregunta
     * Al darse una respuesta
+
+## Preguntas
+
+* Logos e identidad corporativa
+* Categorías
+* Titulares de las preguntas
+* Textos de los emails

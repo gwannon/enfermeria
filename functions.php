@@ -83,6 +83,10 @@ function enfermeria_custom_make_new_user(){
 
     $user->set_role('subscriber'); // give the new user a role, in this case a subscriber
 
+    $display_name = get_the_author_meta('first_name', $user_id)." ".get_the_author_meta('last_name', $user_id);
+
+    wp_update_user( array ('ID' => $user_id, 'display_name' => $display_name));
+
     // now add your custom user meta for each data point
     //update_user_meta($user_id, 'institute', $institute);
 
@@ -91,3 +95,12 @@ function enfermeria_custom_make_new_user(){
     // user wasn't made
   }
 }
+
+function enfermeria_wp_login_form() {
+  $args = ['label_username' => 'Email', 'echo' => false];
+  $login = wp_login_form($args);
+  $login = str_replace( 'class="button button-primary"', 'class="btn btn-primary"', $login );
+  $login = str_replace( 'class="input"', 'class="form-control"', $login );
+  return $login;
+}
+

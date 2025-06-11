@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: enfermeria\n"
-"POT-Creation-Date: 2025-06-05 17:19+0200\n"
-"PO-Revision-Date: 2025-06-05 17:19+0200\n"
+"POT-Creation-Date: 2025-06-11 12:52+0200\n"
+"PO-Revision-Date: 2025-06-11 12:52+0200\n"
 "Last-Translator: \n"
 "Language-Team: monclus.jorge@gmail.com\n"
 "Language: eu_ES\n"
@@ -19,11 +19,15 @@ msgstr ""
 msgid "Consultas enfermeria"
 msgstr ""
 
-#: ../header.php:19 ../index.php:6
+#: ../header.php:18
+msgid "Buscar"
+msgstr ""
+
+#: ../header.php:22 ../index.php:6
 msgid "Hacer pregunta"
 msgstr ""
 
-#: ../header.php:21
+#: ../header.php:24
 msgid "Salir"
 msgstr "Irten"
 
@@ -31,43 +35,54 @@ msgstr "Irten"
 msgid "Preguntas"
 msgstr ""
 
-#: ../index.php:13 ../single-pregunta.php:27
-msgid "Su perfíl todavía no esta aprobado por los administradores."
+#: ../index.php:13
+msgid "Su perfíl todavía no está aprobado por los administradores."
 msgstr ""
 
-#: ../single-pregunta.php:11
+#: ../single-pregunta.php:10 ../templates/preguntas.php:71
+#, php-format
+msgid "Por %s %s"
+msgstr ""
+
+#: ../single-pregunta.php:14
 msgid "Ver adjunto"
 msgstr ""
 
-#: ../single-pregunta.php:17
+#: ../single-pregunta.php:20
 msgid "Respuesta"
 msgstr ""
 
-#: ../single-pregunta.php:23
+#: ../single-pregunta.php:26
 msgid "Esta pregunta todavía no ha sido contestada."
 msgstr ""
 
-#: ../templates/hacerpregunta.php:29 ../templates/hacerpregunta.php:30
+#: ../single-pregunta.php:30
+msgid "Su perfíl todavía no esta aprobado por los administradores."
+msgstr ""
+
+#: ../templates/hacerpregunta.php:28
+msgid ""
+"Pregunta creada correctamente. Recibiras un mensaje cuando se elabore la "
+"respuesta."
+msgstr ""
+
+#: ../templates/hacerpregunta.php:36
 msgid "Pregunta"
 msgstr ""
 
-#: ../templates/hacerpregunta.php:31
-msgid "Más datos"
+#: ../templates/hacerpregunta.php:37
+msgid "Danos los más datos posibles."
 msgstr ""
 
-#: ../templates/hacerpregunta.php:32
-msgid "Amplia tu pregunta con más datos."
-msgstr ""
-
-#: ../templates/hacerpregunta.php:33
+#: ../templates/hacerpregunta.php:38
 msgid "Categoría"
 msgstr ""
 
-#: ../templates/hacerpregunta.php:46
+#: ../templates/hacerpregunta.php:51
 msgid "¿Quieres añadir algún documento?"
 msgstr ""
 
-#: ../templates/hacerpregunta.php:48
+#: ../templates/hacerpregunta.php:53
 msgid "Enviar"
 msgstr ""
 
@@ -80,14 +95,16 @@ msgid "Desconexión realizado con éxito."
 msgstr ""
 
 #: ../templates/loginregistro.php:15
-msgid "Login"
+msgid "Acceso"
 msgstr ""
 
 #: ../templates/loginregistro.php:16
-msgid "No estás logeado"
+msgid ""
+"Si ya tienes usuario y contraseña, introdúcelos en el siguiente formulario "
+"para poder acceder."
 msgstr ""
 
-#: ../templates/loginregistro.php:20 ../templates/loginregistro.php:28
+#: ../templates/loginregistro.php:20 ../templates/loginregistro.php:32
 msgid "Registro"
 msgstr ""
 
@@ -97,26 +114,39 @@ msgid ""
 "veremos si aceptamos tu solicitud."
 msgstr ""
 
-#: ../templates/loginregistro.php:24
+#: ../templates/loginregistro.php:24 ../templates/loginregistro.php:25
 msgid "Nombre"
 msgstr ""
 
-#: ../templates/loginregistro.php:25
+#: ../templates/loginregistro.php:26 ../templates/loginregistro.php:27
 msgid "Apellidos"
 msgstr ""
 
-#: ../templates/loginregistro.php:26
+#: ../templates/loginregistro.php:28
 msgid "Email"
 msgstr ""
 
-#: ../templates/loginregistro.php:27
+#: ../templates/loginregistro.php:29
+msgid "nombr@dominio.com"
+msgstr ""
+
+#: ../templates/loginregistro.php:30 ../templates/loginregistro.php:31
 msgid "Contraseña"
 msgstr ""
 
-#: ../templates/preguntas.php:4
+#: ../templates/preguntas.php:5
+#, php-format
+msgid "Búsqueda: %s"
+msgstr ""
+
+#: ../templates/preguntas.php:9
 msgid "Todas"
 msgstr ""
 
-#: ../templates/preguntas.php:58
+#: ../templates/preguntas.php:65
+msgid "d/m/Y"
+msgstr ""
+
+#: ../templates/preguntas.php:72
 msgid "Ver pregunta completa"
 msgstr ""

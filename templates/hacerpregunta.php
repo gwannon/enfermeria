@@ -1,27 +1,20 @@
 <?php
 
 if(isset($_POST['submit'])){
-
-    //print_r($_REQUEST);
-
-    //print_r($_FILES);
-
-    $term = get_term_by( 'id', $_REQUEST['category'], 'categoria-pregunta');
-
     $user = wp_get_current_user();
+
+    //Creamos la pregunta
     $post_id = wp_insert_post( array(
         'post_status' => 'draft',
         'post_type' => 'pregunta',
         //'post_title' => $_REQUEST['title'],
-        'post_title' => $term->name." | ". get_the_author_meta('first_name', get_current_user_id())." ".get_the_author_meta('last_name', get_current_user_id())." | ".substr($_REQUEST['content'], 0, 50),
+        'post_title' => substr($_REQUEST['content'], 0, 150)." ...",
         'post_content' => $_REQUEST['content'],
         'post_author' => $user->ID
     ) );
 
-    
-
-    //print_r($term);
-
+    //Asignamos categoría
+    $term = get_term_by( 'id', $_REQUEST['category'], 'categoria-pregunta');
     wp_set_object_terms($post_id, $term->term_id, 'categoria-pregunta');
     
     //Subimos ficheros
@@ -29,13 +22,11 @@ if(isset($_POST['submit'])){
         require_once(ABSPATH . "wp-admin" . '/includes/image.php');
         require_once(ABSPATH . "wp-admin" . '/includes/file.php');
         require_once(ABSPATH . "wp-admin" . '/includes/media.php');
-
-
         $attachment = media_handle_upload('file', $user->ID);
         update_field('adjunto', $attachment, $post_id);
-    }
-
-    echo "<h3>".__("Pregunta creada correctamente. Recibiras un mensaje cuando se elabore la respuesta.", "enfermeria")."</h3>";
+    } ?>
+        <div class="alert alert-success" role="alert"><?php _e("Pregunta creada correctamente. Recibiras un mensaje cuando se elabore la respuesta.", "enfermeria"); ?></div>
+    <?php 
 }
 
 ?>
@@ -54,7 +45,7 @@ if(isset($_POST['submit'])){
                 'order' => 'ASC'
             ) );
             foreach($terms as $term) { ?>
-                <label><input class="form-check-input" type="radio" name="category" value="<?php echo $term->term_id; ?>" required /> <?php echo $term->name; ?></label><br/>
+                <label><input class="form-check-input" type="radio" name="category" value="<?php echo $term->term_id; ?>" required /> <?php echo $term->name; ?></label>
         <?php } ?>
     </div><br/>
     <label for="formFile" class="form-label"><b><?php _e("¿Quieres añadir algún documento?", "enfermería"); ?></b></label>

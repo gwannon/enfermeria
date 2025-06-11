@@ -1,7 +1,12 @@
 <div class="col-12">
     <ul class="nav nav-tabs">
+        <?php if(isset($_GET['s']) && $_GET['s'] != '') { ?>
+            <li class="nav-item">
+                <a class="nav-link active" href="<?php the_permalink(MAIN_PAGE_ID);?>/?s=<?php echo get_search_query(); ?>"><?php printf(__("Búsqueda: %s", "enfermeria"), get_search_query()); ?></a>
+            </li>
+        <?php } ?>
         <li class="nav-item">
-            <a class="nav-link<?php echo (!isset($_GET['cat']) ? " active" : ""); ?>" href="<?php the_permalink(MAIN_PAGE_ID);?>"><?php _e("Todas", "enfermeria"); ?></a>
+            <a class="nav-link<?php echo (!isset($_GET['cat']) && !isset($_GET['s']) ? " active" : ""); ?>" href="<?php the_permalink(MAIN_PAGE_ID);?>"><?php _e("Todas", "enfermeria"); ?></a>
         </li>
         <?php
         $terms = get_terms( array(
@@ -23,7 +28,7 @@
 
         if(is_front_page()) {
             $paged = (get_query_var('page')) ? get_query_var('page') : 1;
-        }else {
+        } else {
             $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         }
 
@@ -56,8 +61,8 @@
         while ( $the_query->have_posts() ) { $the_query->the_post(); ?>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="heading<?php echo $post->ID; ?>">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $post->ID; ?>" ria-expanded="true" aria-controls="collapse<?php echo $post->ID; ?>">
-                        <?php the_title(); ?>
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $post->ID; ?>" ria-expanded="true" aria-controls="collapse<?php echo $post->ID; ?>">
+                        <?php echo get_the_date(__("d/m/Y", "enfermeras")); ?> - <?php the_title(); ?>
                     </button>
                 </h2>
                 <div id="collapse<?php echo $post->ID; ?>" class="accordion-collapse collapse" aria-labelledby="heading<?php echo $post->ID; ?>" data-bs-parent="#preguntas">
