@@ -1,6 +1,6 @@
 <?php get_header(); ?>
-<div class="col">
-    <?php if(is_user_logged_in()) { ?>
+<?php if(is_user_logged_in()) { ?>
+    <div class="col">
         <?php $user = wp_get_current_user();
         if (!in_array( 'subscriber', (array) $user->roles ) ) { ?>
             <?php while ( have_posts() ) : the_post(); ?>
@@ -29,8 +29,8 @@
         <?php } else { ?>
             <div class="alert alert-warning" role="alert"><?php _e("Su perfíl todavía no esta aprobado por los administradores.", "enfermeria"); ?></div>
         <?php } ?>
-    <?php } else { ?>
-        <?php include_once(__DIR__."/templates/loginregistro.php"); ?>
-    <?php } ?>
-</div>
+    </div>
+<?php } else { ?>
+    <?php include_once(__DIR__."/templates/loginregistro.php"); ?>
+<?php } ?>
 <?php get_footer();

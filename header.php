@@ -15,7 +15,7 @@
 		<?php if(is_user_logged_in()) { ?>
 			<div class="col d-flex flex-row align-items-start justify-content-end">
 				<form method="get" action="<?php echo get_home_url(); ?>" class="me-2">
-					<input class="form-control" type="text" name="s" value="<?php echo get_query_var('s'); ?>" placeholder="<?php _e("Buscar", "enfermeria"); ?>" />
+					<input class="form-control" type="text" name="buscar" value="<?php echo strip_tags($_GET['buscar']); ?>" placeholder="<?php _e("Buscar", "enfermeria"); ?>" />
 					 <input type="submit" class="btn btn-primary" value="<?php _e("Buscar", "enfermería"); ?>">
 				</form>
 				<?php $user = wp_get_current_user();

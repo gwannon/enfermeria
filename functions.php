@@ -50,8 +50,6 @@ function searchfilter($query) {
   }
   return $query;
 }
-add_filter('pre_get_posts','searchfilter');
-
 
 /* Registrar usuario */
 add_action( 'admin_post_nopriv_custom_registration', 'enfermeria_custom_make_new_user' ); // the format here is "admin_post_nopriv_" + [the hidden action you put in the html form]
