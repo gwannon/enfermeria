@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title><?php wp_title(); ?></title>
+	<title><?php echo get_bloginfo('name'); ?></title>
 	<link href="/favicon.ico" rel="shortcut icon"/>
 	<?php wp_head(); ?>
 </head>
