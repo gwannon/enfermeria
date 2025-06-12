@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: enfermeria\n"
-"POT-Creation-Date: 2025-06-11 12:51+0200\n"
-"PO-Revision-Date: 2025-06-11 12:52+0200\n"
+"POT-Creation-Date: 2025-06-12 13:09+0200\n"
+"PO-Revision-Date: 2025-06-12 13:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: monclus.jorge@gmail.com\n"
 "Language: es_ES\n"
@@ -19,27 +19,27 @@ msgstr ""
 msgid "Consultas enfermeria"
 msgstr ""
 
-#: ../header.php:18
+#: ../header.php:18 ../header.php:19
 msgid "Buscar"
 msgstr ""
 
-#: ../header.php:22 ../index.php:6
+#: ../header.php:25 ../page.php:6
 msgid "Hacer pregunta"
 msgstr ""
 
-#: ../header.php:24
+#: ../header.php:27
 msgid "Salir"
 msgstr ""
 
-#: ../index.php:9
+#: ../page.php:9
 msgid "Preguntas"
 msgstr ""
 
-#: ../index.php:13
+#: ../page.php:13
 msgid "Su perfíl todavía no está aprobado por los administradores."
 msgstr ""
 
-#: ../single-pregunta.php:10 ../templates/preguntas.php:71
+#: ../single-pregunta.php:10 ../templates/preguntas.php:72
 #, php-format
 msgid "Por %s %s"
 msgstr ""
@@ -52,11 +52,11 @@ msgstr ""
 msgid "Respuesta"
 msgstr ""
 
-#: ../single-pregunta.php:26
+#: ../single-pregunta.php:27
 msgid "Esta pregunta todavía no ha sido contestada."
 msgstr ""
 
-#: ../single-pregunta.php:30
+#: ../single-pregunta.php:32
 msgid "Su perfíl todavía no esta aprobado por los administradores."
 msgstr ""
 
@@ -66,23 +66,35 @@ msgid ""
 "respuesta."
 msgstr ""
 
-#: ../templates/hacerpregunta.php:36
+#: ../templates/hacerpregunta.php:33
+#, php-format
+msgid "Nueva pregunta de %s"
+msgstr ""
+
+#: ../templates/hacerpregunta.php:35
+#, php-format
+msgid ""
+"<a href='%s'>Responder pregunta</a><br/>---<br/><br/>%s<br/><br/>---<br/"
+"><b>Categoria:</b> %s<br/><b>De:</b> %s"
+msgstr ""
+
+#: ../templates/hacerpregunta.php:47
 msgid "Pregunta"
 msgstr ""
 
-#: ../templates/hacerpregunta.php:37
+#: ../templates/hacerpregunta.php:48
 msgid "Danos los más datos posibles."
 msgstr ""
 
-#: ../templates/hacerpregunta.php:38
+#: ../templates/hacerpregunta.php:49
 msgid "Categoría"
 msgstr ""
 
-#: ../templates/hacerpregunta.php:51
+#: ../templates/hacerpregunta.php:62
 msgid "¿Quieres añadir algún documento?"
 msgstr ""
 
-#: ../templates/hacerpregunta.php:53
+#: ../templates/hacerpregunta.php:64
 msgid "Enviar"
 msgstr ""
 
@@ -104,7 +116,7 @@ msgid ""
 "para poder acceder."
 msgstr ""
 
-#: ../templates/loginregistro.php:20 ../templates/loginregistro.php:32
+#: ../templates/loginregistro.php:20 ../templates/loginregistro.php:33
 msgid "Registro"
 msgstr ""
 
@@ -127,26 +139,34 @@ msgid "Email"
 msgstr ""
 
 #: ../templates/loginregistro.php:29
-msgid "nombr@dominio.com"
+msgid "nombre@euskadi.eus"
 msgstr ""
 
-#: ../templates/loginregistro.php:30 ../templates/loginregistro.php:31
+#: ../templates/loginregistro.php:30
 msgid "Contraseña"
 msgstr ""
 
-#: ../templates/preguntas.php:5
+#: ../templates/loginregistro.php:31
+msgid "Mínimo 8 caracteres, mayúsculas, minúsculas y números"
+msgstr ""
+
+#: ../templates/preguntas.php:4
+msgid "Todas"
+msgstr ""
+
+#: ../templates/preguntas.php:20
 #, php-format
 msgid "Búsqueda: %s"
 msgstr ""
 
-#: ../templates/preguntas.php:9
-msgid "Todas"
-msgstr ""
-
-#: ../templates/preguntas.php:65
+#: ../templates/preguntas.php:66
 msgid "d/m/Y"
 msgstr ""
 
-#: ../templates/preguntas.php:72
+#: ../templates/preguntas.php:73
 msgid "Ver pregunta completa"
+msgstr ""
+
+#: ../templates/preguntas.php:79
+msgid "No hay preguntas."
 msgstr ""

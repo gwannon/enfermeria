@@ -5,17 +5,12 @@ Tema de WP para sistema de preguntas de enfermería.
 
 * Usuario
     * Editar mi perfil/contraseña
-    * Recordar contraseña.
-    * Chequeos en el registro
+    * Chequeos en el registro a nivel programación
     * Chequeos a la hora de subir pregunta y meter un wysiwyg en los editores
-    * Buscador avanzado
-    * Editor de perfil con tus preguntas.
-* Admins
-    * Filtros con categorías en el listado de preguntas
-* Diseño
+    * Editor de perfil personal con tus preguntas.
+    
 * Emails de aviso
     * Al registrarse un usuario
-    * Al crearse una pregunta
     * Al darse una respuesta
 
 ## Preguntas
@@ -24,8 +19,4 @@ Tema de WP para sistema de preguntas de enfermería.
 * Categorías
 * Titulares de las preguntas
 * Textos de los emails
-* Traducción de preguntas ???
-
-
-* Verificar al registrarse que los correos son de euskadi.eus
-* 
+* Traducción de preguntas???
