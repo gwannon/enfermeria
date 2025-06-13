@@ -97,3 +97,40 @@ function enfermeria_page_settings() {
 	</form>
 	<?php
 }
+
+//FOoter
+
+function enfermeria_register_widget_areas() {
+  register_sidebar( array(
+    'name'          => 'Footer 1',
+    'id'            => 'footer_1',
+    'description'   => __('Footer col 1', "enfermeria"),
+    'before_widget' => '<div class="col-4">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+    register_sidebar( array(
+    'name'          => 'Footer 2',
+    'id'            => 'footer_2',
+    'description'   => __('Footer col 2', "enfermeria"),
+    'before_widget' => '<div class="col-4">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+    register_sidebar( array(
+    'name'          => 'Footer 3',
+    'id'            => 'footer_3',
+    'description'   => __('Footer col 3', "enfermeria"),
+    'before_widget' => '<div class="col-4">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+ 
+}
+
+add_action( 'widgets_init', 'enfermeria_register_widget_areas' );
