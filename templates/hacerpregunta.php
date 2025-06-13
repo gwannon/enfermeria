@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
     $subject = sprintf(__("Nueva pregunta de %s", "enfermeria"), $user->display_name);
     $edit_link = get_admin_url()."/post.php?post=".$post_id."&action=edit";
     $text = sprintf(__("<a href='%s'>Responder pregunta</a><br/>---<br/><br/>%s<br/><br/>---<br/><b>Categoria:</b> %s<br/><b>De:</b> %s", "enfermeria"), $edit_link, apply_filters("the_content", $_REQUEST['content']), $term->name, $user->display_name); 
-    $admins = explode(",", "monclus.jorge@gmail.com,jorge@enutt.net");
+    $admins = explode(",", EMAILS_AVISO);
     foreach ($admins as $admin_email) { 
         if(isset($attachment) && $attachment != '') wp_mail($admin_email, $subject, $text."<br>CON ADJUNTO", $headers, get_attached_file($attachment));
         else wp_mail($admin_email, $subject, $text, $headers);

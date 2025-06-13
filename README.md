@@ -4,18 +4,22 @@ Tema de WP para sistema de preguntas de enfermería.
 ## TODO
 
 * Usuario
-    * Editar mi perfil/contraseña
-    * Chequeos en el registro a nivel programación
-    * Chequeos a la hora de subir pregunta y meter un wysiwyg en los editores
-    * Editor de perfil personal con tus preguntas.
+    * Editar mi nombre, apellidos, contraseña y un listado de tus preguntas.
+    * Chequeos a la hora de subir pregunta y meter un wysiwyg en lo textarea.
     
 * Emails de aviso
     * Al registrarse un usuario
+    * Al aprobarse un usuario
     * Al darse una respuesta
+
+* Zona de admin
+    * Emails de aviso
+
+* Footer falso
 
 ## Preguntas
 
-* Logos e identidad corporativa
+* Identidad corporativa
 * Categorías
 * Titulares de las preguntas
 * Textos de los emails

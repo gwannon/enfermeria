@@ -1,6 +1,7 @@
 <?php
 
 define ("MAIN_PAGE_ID", 2);
+define ("EMAILS_AVISO", get_option("_enfermeria_email"));
 
 /* ----------- Multi-idioma ------------------ */
 function enfermeria_plugins_loaded() {
@@ -53,57 +54,15 @@ function searchfilter($query) {
   return $query;
 }
 
-/* Registrar usuario */
-add_action( 'admin_post_nopriv_custom_registration', 'enfermeria_custom_make_new_user' ); // the format here is "admin_post_nopriv_" + [the hidden action you put in the html form]
-
-
-function enfermeria_custom_make_new_user(){
-
-  // TODO: validate the nonce before continuing
-
-  // TODO: validate that all incoming POST data is OK
-
-  $user = sanitize_title($_POST['email']); // potentially sanitize these
-  $pass = $_POST['password']; // potentially sanitize these
-  $email = $_POST['email']; // potentially sanitize these
-  $firstname = $_POST['firstname'];
-  $lastname = $_POST['lastname'];
-  
-  $user_id = wp_create_user( $user, $pass, $email ); // this creates the new user and returns the ID
-
-  if($user_id){ // if the user exists/if creating was successful.
-    $user = new WP_User( $user_id ); // load the new user
-
-    $userdata = array(
-        'ID' => $user_id,
-        'first_name' => $firstname,
-        'last_name' => $lastname,
-    );
-    wp_update_user( $userdata );
-
-    $user->set_role('subscriber'); // give the new user a role, in this case a subscriber
-
-    $display_name = get_the_author_meta('first_name', $user_id)." ".get_the_author_meta('last_name', $user_id);
-
-    wp_update_user( array ('ID' => $user_id, 'display_name' => $display_name));
-
-    // now add your custom user meta for each data point
-    //update_user_meta($user_id, 'institute', $institute);
-
-    wp_redirect('/?register=ok'); // redirect to some sort of thank you page perhaps.
-  }else{
-    // user wasn't made
-  }
-}
+//Preparar logeo
 
 function enfermeria_wp_login_form() {
-  $args = ['label_username' => 'Email', 'echo' => false];
+  $args = ['label_username' => __('Email', "enfermeria"), 'echo' => false];
   $login = wp_login_form($args);
   $login = str_replace( 'class="button button-primary"', 'class="btn btn-primary"', $login );
   $login = str_replace( 'class="input"', 'class="form-control"', $login );
   return $login;
 }
-
 
 function enfermeria_custom_login_logo() {
     echo '<style type="text/css">
@@ -117,3 +76,24 @@ function enfermeria_custom_login_logo() {
 }
 
 add_action('login_enqueue_scripts', 'enfermeria_custom_login_logo');
+
+//Administrador 
+add_action( 'admin_menu', 'enfermeria_plugin_menu' );
+
+function enfermeria_plugin_menu() {
+	add_options_page( __('Enfermería', "enfermeria"), __('Enfermería', "enfermeria"), 'manage_options', "enfermeria", 'enfermeria_page_settings');
+}
+
+function enfermeria_page_settings() { 
+	?><h1><?php _e("Administrar sistema de preguntas", "enfermeria"); ?></h1>
+	<?php if(isset($_REQUEST['sendadmin']) && $_REQUEST['sendadmin'] != '') { 
+		?><p style="border: 1px solid green; color: green; text-align: center;"><?php _e("Datos guardados correctamente.", 'wp-a-tu-gusto'); ?></p><?php
+		update_option('_enfermeria_email', $_POST['_enfermeria_email']);
+	} ?>
+	<form method="post">
+		<b><?php _e("Emails de aviso", "enfermeria"); ?>:</b><br/>
+		<input type="text" name="_enfermeria_email" value="<?php echo get_option("_enfermeria_email"); ?>" style="width: calc(100% - 20px);" placeholder="<?php _e("separados por comas", "enfermeria"); ?>" /><br/><br/>
+		<input type="submit" name="sendadmin" class="button button-primary" value="<?php _e("Guardar", "enfermeria"); ?>" />
+	</form>
+	<?php
+}
